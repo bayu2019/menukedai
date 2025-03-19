@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Lazisna - Kuliner Istimewa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary: #8B0000; /* Merah Hati */
+            --secondary: #F5F5F5;
+            --accent: #FFA500; /* Oranye */
+            --dark: #333;
+            --light: #FFF;
+            --background: #F0F0F0;
+            --card-bg: #FFF;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: url('header-image.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            background-color: var(--primary);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-item {
+            color: var(--light);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 40px 0;
+            color: var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .menu-desc {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .menu-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .order-button {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            margin: 10px 0;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .social-links img {
+            width: 30px;
+            margin: 0 10px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Kedai Lazisna</div>
+            <p class="tagline">"Kuliner Istimewa, Selera Semua"</p>
+        </div>
+        <div class="header-image"></div>
+    </header>
+    
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <a href="#makanan" class="nav-item">Makanan</a>
+            <a href="#minuman" class="nav-item">Minuman</a>
+            <a href="#snack" class="nav-item">Snack</a>
+            <a href="#kontak" class="nav-item">Kontak</a>
+        </div>
+    </nav>
+    
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Selamat Datang di Kedai Lazisna</h2>
+            <p>Nikmati kelezatan kuliner istimewa dengan cita rasa yang menggugah selera</p>
+            <a href="#makanan" class="cta-button">Lihat Menu</a>
+        </section>
+        
+        <!-- Kategori Makanan -->
+        <section id="makanan">
+            <h2 class="category-title">Menu Makanan Kami</h2>
+            <div class="menu-grid">
+                <!-- Makanan 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan1.jpg" alt="Nasi Goreng Spesial">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Nasi Goreng Spesial</h3>
+                        <p class="menu-desc">Nasi goreng dengan bumbu pilihan, telur, ayam, dan sayuran segar</p>
+                        <p class="menu-price">Rp 13.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Nasi Goreng Spesial', 13000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Makanan 2 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan2.jpg" alt="Ayam Goreng Kremes">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Ayam Goreng Kremes</h3>
+                        <p class="menu-desc">Ayam goreng renyah dengan taburan kremes dan sambal pedas</p>
+                        <p class="menu-price">Rp 11.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Ayam Goreng Kremes', 11000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Makanan 3 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan3.jpg" alt="Kwetiau Goreng">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Kwetiau Goreng</h3>
+                        <p class="menu-desc">Kwetiau goreng dengan daging sapi, telur, dan sayuran</p>
+                        <p class="menu-price">Rp 13.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Kwetiau Goreng', 13000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 4 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan4.jpg" alt="Mie Goreng Spesial">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Mie Goreng Spesial</h3>
+                        <p class="menu-desc">Mie goreng dengan bumbu spesial, telur, dan sayuran segar</p>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Mie Goreng Spesial', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 5 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan5.jpg" alt="Sate Ayam">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Sate Ayam</h3>
+                        <p class="menu-desc">Sate ayam dengan bumbu kacang yang lezat</p>
+                        <p class="menu-price">Rp 15.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Sate Ayam', 15000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 6 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan6.jpg" alt="Bakso">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Bakso</h3>
+                        <p class="menu-desc">Bakso dengan kuah kaldu yang gurih dan segar</p>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Bakso', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 7 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan7.jpg" alt="Nasi Campur">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Nasi Campur</h3>
+                        <p class="menu-desc">Nasi campur dengan berbagai lauk pauk yang lezat</p>
+                        <p class="menu-price">Rp 14.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Nasi Campur', 14000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 8 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan8.jpg" alt="Soto Ayam">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Soto Ayam</h3>
+                        <p class="menu-desc">Soto ayam dengan kuah kuning yang segar dan lezat</p>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Soto Ayam', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori Minuman -->
+        <section id="minuman">
+            <h2 class="category-title">Minuman Kami</h2>
+            <div class="menu-grid">
+                <!-- Minuman 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman1.jpg" alt="Es Teh Manis">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Teh Manis</h3>
+                        <p class="menu-price">Rp 5.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Teh Manis', 5000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Minuman 2 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman2.jpg" alt="Jus Jeruk">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Jus Jeruk</h3>
+                        <p class="menu-price">Rp 8.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Jus Jeruk', 8000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Minuman 3 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman3.jpg" alt="Kopi Susu">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Kopi Susu</h3>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Kopi Susu', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 4 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman4.jpg" alt="Es Kelapa Muda">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Kelapa Muda</h3>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Kelapa Muda', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 5 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman5.jpg" alt="Susu Coklat">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Susu Coklat</h3>
+                        <p class="menu-price">Rp 7.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Susu Coklat', 7000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 6 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman6.jpg" alt="Teh Tarik">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Teh Tarik</h3>
+                        <p class="menu-price">Rp 6.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Teh Tarik', 6000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 7 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman7.jpg" alt="Es Jeruk">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Jeruk</h3>
+                        <p class="menu-price">Rp 5.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Jeruk', 5000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 8 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman8.jpg" alt="Jus Alpukat">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Jus Alpukat</h3>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Jus Alpukat', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori Snack -->
+        <section id="snack">
+            <h2 class="category-title">Snack Kami</h2>
+            <div class="menu-grid">
+                <!-- Snack 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="snack1.jpg" alt="Pisang Goreng">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Pisang Goreng</h3>
+                        <p class="menu-price">Rp 7.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Pisang Goreng', 7000)">Pesan Sekarang<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Lazisna - Kuliner Istimewa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --primary: #8B0000; /* Merah Hati */
+            --secondary: #F5F5F5;
+            --accent: #FFA500; /* Oranye */
+            --dark: #333;
+            --light: #FFF;
+            --background: #F0F0F0;
+            --card-bg: #FFF;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: url('header-image.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            background-color: var(--primary);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-item {
+            color: var(--light);
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 40px 0;
+            color: var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .menu-desc {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .menu-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .order-button {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            margin: 10px 0;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .social-links img {
+            width: 30px;
+            margin: 0 10px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Kedai Lazisna</div>
+            <p class="tagline">"Kuliner Istimewa, Selera Semua"</p>
+        </div>
+        <div class="header-image"></div>
+    </header>
+    
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <a href="#makanan" class="nav-item">Makanan</a>
+            <a href="#minuman" class="nav-item">Minuman</a>
+            <a href="#snack" class="nav-item">Snack</a>
+            <a href="#kontak" class="nav-item">Kontak</a>
+        </div>
+    </nav>
+    
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Selamat Datang di Kedai Lazisna</h2>
+            <p>Nikmati kelezatan kuliner istimewa dengan cita rasa yang menggugah selera</p>
+            <a href="#makanan" class="cta-button">Lihat Menu</a>
+        </section>
+        
+        <!-- Kategori Makanan -->
+        <section id="makanan">
+            <h2 class="category-title">Menu Makanan Kami</h2>
+            <div class="menu-grid">
+                <!-- Makanan 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan1.jpg" alt="Nasi Goreng Spesial">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Nasi Goreng Spesial</h3>
+                        <p class="menu-desc">Nasi goreng dengan bumbu pilihan, telur, ayam, dan sayuran segar</p>
+                        <p class="menu-price">Rp 13.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Nasi Goreng Spesial', 13000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Makanan 2 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan2.jpg" alt="Ayam Goreng Kremes">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Ayam Goreng Kremes</h3>
+                        <p class="menu-desc">Ayam goreng renyah dengan taburan kremes dan sambal pedas</p>
+                        <p class="menu-price">Rp 11.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Ayam Goreng Kremes', 11000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Makanan 3 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan3.jpg" alt="Kwetiau Goreng">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Kwetiau Goreng</h3>
+                        <p class="menu-desc">Kwetiau goreng dengan daging sapi, telur, dan sayuran</p>
+                        <p class="menu-price">Rp 13.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Kwetiau Goreng', 13000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 4 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan4.jpg" alt="Mie Goreng Spesial">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Mie Goreng Spesial</h3>
+                        <p class="menu-desc">Mie goreng dengan bumbu spesial, telur, dan sayuran segar</p>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Mie Goreng Spesial', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 5 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan5.jpg" alt="Sate Ayam">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Sate Ayam</h3>
+                        <p class="menu-desc">Sate ayam dengan bumbu kacang yang lezat</p>
+                        <p class="menu-price">Rp 15.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Sate Ayam', 15000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 6 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan6.jpg" alt="Bakso">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Bakso</h3>
+                        <p class="menu-desc">Bakso dengan kuah kaldu yang gurih dan segar</p>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Bakso', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 7 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan7.jpg" alt="Nasi Campur">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Nasi Campur</h3>
+                        <p class="menu-desc">Nasi campur dengan berbagai lauk pauk yang lezat</p>
+                        <p class="menu-price">Rp 14.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Nasi Campur', 14000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Makanan 8 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="makanan8.jpg" alt="Soto Ayam">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Soto Ayam</h3>
+                        <p class="menu-desc">Soto ayam dengan kuah kuning yang segar dan lezat</p>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Soto Ayam', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori Minuman -->
+        <section id="minuman">
+            <h2 class="category-title">Minuman Kami</h2>
+            <div class="menu-grid">
+                <!-- Minuman 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman1.jpg" alt="Es Teh Manis">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Teh Manis</h3>
+                        <p class="menu-price">Rp 5.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Teh Manis', 5000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Minuman 2 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman2.jpg" alt="Jus Jeruk">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Jus Jeruk</h3>
+                        <p class="menu-price">Rp 8.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Jus Jeruk', 8000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+                
+                <!-- Minuman 3 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman3.jpg" alt="Kopi Susu">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Kopi Susu</h3>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Kopi Susu', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 4 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman4.jpg" alt="Es Kelapa Muda">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Kelapa Muda</h3>
+                        <p class="menu-price">Rp 12.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Kelapa Muda', 12000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 5 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman5.jpg" alt="Susu Coklat">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Susu Coklat</h3>
+                        <p class="menu-price">Rp 7.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Susu Coklat', 7000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 6 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman6.jpg" alt="Teh Tarik">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Teh Tarik</h3>
+                        <p class="menu-price">Rp 6.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Teh Tarik', 6000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 7 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman7.jpg" alt="Es Jeruk">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Es Jeruk</h3>
+                        <p class="menu-price">Rp 5.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Es Jeruk', 5000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+
+                <!-- Minuman 8 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="minuman8.jpg" alt="Jus Alpukat">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Jus Alpukat</h3>
+                        <p class="menu-price">Rp 10.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Jus Alpukat', 10000)">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori Snack -->
+        <section id="snack">
+            <h2 class="category-title">Snack Kami</h2>
+            <div class="menu-grid">
+                <!-- Snack 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="snack1.jpg" alt="Pisang Goreng">
+                    </div>
+                    <div class="menu-info">
+                        <h3 class="menu-title">Pisang Goreng</h3>
+                        <p class="menu-price">Rp 7.000</p>
+                        <button class="order-button" onclick="orderViaWhatsapp('Pisang Goreng', 7000)">Pesan Sekarang
